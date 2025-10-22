@@ -13,12 +13,28 @@ function Contact() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Tack för ditt meddelande! (Thank you for your message)");
-        console.log("Form submitted:", formData);
-        // Later, send this to your Azure Function endpoint
+
+        try {
+            const response = await fetch("http://localhost:7220/api/ContactFormFunction", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert("Tack för ditt meddelande! (Thank you for your message)");
+                setFormData({ name: "", email: "", phone: "", message: "" }); // reset form
+            } else {
+                alert("Något gick fel. Försök igen senare. (Something went wrong, please try again.)");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Kunde inte ansluta till servern. (Could not connect to the server.)");
+        }
     };
+
 
     return (
         <div className="contact-container">
