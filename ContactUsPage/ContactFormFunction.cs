@@ -25,24 +25,40 @@ namespace ContactUsPage
 
             var body = await new StreamReader(req.Body).ReadToEndAsync();
 
-            var data = JsonSerializer.Deserialize<ContactFormData>(body, new JsonSerializerOptions
+            ContactFormData? data = null;
+            try
             {
-                PropertyNameCaseInsensitive = true
-            });
+                data = JsonSerializer.Deserialize<ContactFormData>(body, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+            catch (JsonException ex)
+            {
+                _logger.LogError(ex, "Failed to deserialize contact form data.");
+            }
+
+            if (data == null)
+            {
+                var badResponse = req.CreateResponse(System.Net.HttpStatusCode.BadRequest);
+                await badResponse.WriteStringAsync("Invalid JSON data.");
+                return badResponse;
+            }
 
             _logger.LogInformation($"New message from {data.Name} ({data.Email}) - {data.Message}");
 
             var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
             await response.WriteStringAsync("Message received successfully!");
+
             return response;
         }
 
         public class ContactFormData
         {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; }
-            public string Message { get; set; }
+            public string? Name { get; set; }
+            public string? Email { get; set; }
+            public string? Phone { get; set; }
+            public string? Message { get; set; }
         }
     }
 }

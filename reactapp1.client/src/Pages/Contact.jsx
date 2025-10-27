@@ -25,7 +25,7 @@ function Contact() {
 
             if (response.ok) {
                 alert("Tack för ditt meddelande! (Thank you for your message)");
-                setFormData({ name: "", email: "", phone: "", message: "" }); // reset form
+                setFormData({ name: "", email: "", phone: "", message: "" }); 
             } else {
                 alert("Något gick fel. Försök igen senare. (Something went wrong, please try again.)");
             }
