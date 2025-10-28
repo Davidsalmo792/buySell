@@ -1,4 +1,4 @@
-/* === LOGIN PAGE STYLING === */
+﻿/* === LOGIN PAGE STYLING === */
 
 body {
     margin: 0;
@@ -158,4 +158,7 @@ body {
 /* Responsive layout for smaller screens */
 @media (max-width: 600px) {
     .login-container {
-        width
+        width: 90%;
+        padding: 25px;
+    }
+}
