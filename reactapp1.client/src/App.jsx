@@ -1,10 +1,10 @@
 ﻿import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
+import Login from "./Pages/Login";
+import Home from "./Pages/Home";
 import "./App.css";
-import Fordon from "./pages/Fordon";
-import Contact from "./pages/Contact";
+import Fordon from "./Pages/Fordon";
+import Contact from "./Pages/Contact";
 
 
 
