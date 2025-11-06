@@ -1,4 +1,4 @@
-.category-layout {
+﻿.category-layout {
     padding: 120px 40px;
     background-color: #f8f9fb;
     min-height: 100vh;
@@ -6,7 +6,7 @@
     color: #222;
 }
 
-/* Search + Location Row */
+
 .search-section {
     display: flex;
     justify-content: center;
@@ -44,7 +44,7 @@
         box-shadow: 0 0 6px rgba(0, 120, 215, 0.3);
     }
 
-/* Filter Bar */
+
 .filter-bar {
     background-color: white;
     padding: 20px 30px;
@@ -57,7 +57,7 @@
     color: #444;
 }
 
-/* Category Title + Content */
+
 .category-content {
     text-align: center;
 }
