@@ -4,15 +4,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-// ✅ CORS policy for local dev + only 🚳 is alt SWA domain
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
             policy.WithOrigins(
-                "https://blue-pebble-0baf4df03.3.azurestaticapps.net", // your deployed frontend
-                "https://localhost:61253"                            // your local Vite frontend
+                "https://blue-pebble-0baf4df03.3.azurestaticapps.net", //  deployed frontend
+                "https://localhost:61253"                            //  local Vite frontend
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -34,7 +34,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// ✅ CORS must be BEFORE Authorization & MapControllers
 app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "reactapp1.client",
   "private": true,
   "version": "0.0.0",
@@ -26,3 +26,4 @@
     "react-router-dom": "^6.23.1"
   }
 }
+
